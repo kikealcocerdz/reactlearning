@@ -1,10 +1,7 @@
 "use client"
-import { useState } from 'react'
-import './page.module.css'
-import styles from './page.module.css'
 
 
-const Button = ({handleClick, text}) => {
+const Button = ({handleClick, text}, children) => {
   return (
     <button onClick={handleClick}>
       {text}
@@ -12,51 +9,52 @@ const Button = ({handleClick, text}) => {
   )
 }
 
-const TwitterCard = ({formatuserName, userName, name, isFollowing}) => {
-  console.log(isFollowing)
+const TwitterCard = ({children, userName="instagram", isFollowing}) => {
+  const text = isFollowing ? 'Following' : 'Follow'
+  const buttonClassName = isFollowing 
+    ? 'tw-follow-card-button-following' 
+    : 'tw-follow-card-button'
+  const userNameAt = `@${userName}`
   return (
     <article className='tw-follow-card'>
       <header className= 'tw-follow-card-header'>
         <img className='tw-follow-card-img' alt= "Avatar" 
         src = {`https://unavatar.io/${userName}`} />
         <div>
-          <strong>{name}</strong>
-          <span>{formatuserName(userName)}</span>
+          <strong>{children}</strong>
+          <span className="tw-followCard-info">{userNameAt}</span>
         </div>
       </header>
       <aside>
-        <Button text="Follow" handleClick={() => alert("followed")} />
+        <button className="tw-fol">
+          {text}
+        </button>
       </aside>
     </article>
     )
 }
 
 const App = () => {
-  const format = (userName)  => `@${userName}`
   return (
     <>
       <section className='app'>
       <TwitterCard 
-      formatuserName={format} 
       userName="kikealcocerdz" 
-      name="Enrique Alcocer" 
       isFollowing
-      />
+      >
+        enrique1
+      </TwitterCard>
+
+      <TwitterCard userName="midudev" isFollowing>
+        midu1
+      </TwitterCard>
 
       <TwitterCard 
-      formatuserName={format} 
-      userName="midudev" 
-      name="Miguel Durán" 
+      userName="midudev"  
       isFollowing
-      />
-
-      <TwitterCard 
-      formatuserName={format} 
-      userName="midudev" 
-      name="Miguel Durán" 
-      isFollowing
-      />
-
+      >
+        midu2
+      </TwitterCard>
       </section>   
     </>
     )
