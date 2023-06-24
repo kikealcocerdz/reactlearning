@@ -1,2 +1,2 @@
 # reactlearning
-# my path into learning react
+This repository will be based on my path to learn React and gain knowledge about web development
