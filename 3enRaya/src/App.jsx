@@ -1,38 +1,23 @@
 import { useState } from 'react'
+import confetti from 'canvas-confetti'
 
-const TURNS = {
-  X: 'X',
-  O: 'O'
-}
+import {TURNS, winnercombs} from './constants.js'
+import {WinnerModal} from './components/WinnerModal.jsx'
+import {Square} from './components/Square.jsx'
 
-const Square = ({ children, isSelected, updateBoard, index}) => {
-  const className = `square ${isSelected ? 'selected' : ''}`
 
-  const handleClick = () => {
-    updateBoard(index)
-  }
-
-  return (
-    <div onClick={handleClick} className={className}>
-      {children}
-    </div>
-  )
-}
-
-const winnercombs = [
-  [0,1,2], //fila 1
-  [3,4,5], //fila 2
-  [6,7,8], //fila 3
-  [0,3,6], //columna 1
-  [1,4,7], //columna 2
-  [2,5,8], //columna 3
-  [0,4,8], //diagonal 1
-  [2,4,6], //diagonal 2
-]
 
 function App() {
-  const [board, setBoard] = useState(Array(9).fill(null))
-  const [turn, setTurn] = useState(TURNS.X)
+  const [board, setBoard] = useState(()=> {
+    const boardFromStorage = window.localStorage.getItem('board')
+    if (boardFromStorage) return JSON.parse(boardFromStorage)
+    return Array(9).fill(null)
+  })
+  const [turn, setTurn] = useState(()=> {
+    const turnFromStorage = window.localStorage.getItem('turn')
+    if (turnFromStorage) return JSON.parse(turnFromStorage)
+    return TURNS.X 
+  })
   const [winner, setWinner] = useState(null)
 
 
@@ -56,6 +41,8 @@ function App() {
     setBoard(Array(9).fill(null))
     setTurn(TURNS.X)
     setWinner(null)
+    window.localStorage.removeItem('board')
+    window.localStorage.removeItem('turn')
   }
 
   const updateBoard = (index) => {
@@ -68,9 +55,11 @@ function App() {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     console.log("Turno de: ", newTurn)
     setTurn(newTurn)
+    window.localStorage.setItem('board', JSON.stringify(newBoard))
     const newWinner = checkWinner(newBoard)
     //hemos ganao
     if (newWinner) {
+      confetti()
       setWinner(newWinner)
     }
     else if (checkEndGame(newBoard)){
@@ -108,28 +97,7 @@ function App() {
       {TURNS.O}
     </Square>
   </section>
-
-  {
-    winner !== null && (
-      <section className="winner">
-        <div className='text'>
-          <h2>
-            {
-              winner === false
-              ? 'Empate'
-              : 'Ganó:'
-            }
-          </h2>
-        <header className='win'>
-            {winner && <Square>{winner}</Square>}
-        </header>
-        <footer>
-          <button onClick={resetGame}> Empezar de nuevo</button>
-        </footer>
-        </div>
-        </section>
-      )
-  }
+  <WinnerModal winner={winner} resetGame={resetGame}/>
   </main>
   )
 }
