@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { GenerateRandom } from '../logic/random_number'
 import './App.css'
+import './index.css'
 // import { toCamelCase } from '../logic/camelCase'
 
 const separator = '-'
@@ -55,12 +56,24 @@ export function App () {
 
   return (
     <main>
-      <h1>PokeGuess</h1>
-      <section>
+
+      <header>
+        <h1>PokeGuess</h1>
+      </header>
+
+      <div style={{ display: 'flex', placeItems: 'center' }}>
         <img src={pokemonImage} alt={`Image extracted for ${pokemonId}`} />
         {pokemonId && <p>{type}</p>}
-      </section>
-      <button onClick={nextPokemon}>Next Pokemon</button>
+      </div>
+      <label>
+        Name of the pokemon
+        <form className='form'>
+          <input placeholder='Charizard, Blastoise' />
+          <button type='submit'>Correct?</button>
+        </form>
+      </label>
+
+      <button onClick={nextPokemon}>Pass</button>
     </main>
   )
 }
