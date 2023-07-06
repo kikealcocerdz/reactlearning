@@ -11,17 +11,30 @@ export function PokemonInfo () {
   const [type, setType] = useState('No abilities for this pokemon')
   const [win, setWin] = useState(false)
   const verifyName = () => {
-    const value = inputRef.current.value
-    console.log(value)
-    console.log(pokemonName)
-    if (value.toUpperCase() === { pokemonName }.toUppercase()) {
-      console.log(pokemonName)
-      console.log(value)
-      const newWin = 1
-      console.log(newWin)
-      setWin(newWin)
+    const input = inputRef.current.value
+    const inputCapitalized = input[0].toUpperCase() + input.slice(1)
+    if (inputCapitalized === pokemonName) {
+      counter.current++
+      setWin(true)
+    } else {
+      setWin(false)
     }
-    return win
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    verifyName()
+  }
+
+  const counter = useRef(0)
+
+  const resetGame = () => {
+    setPokemonId(GenerateRandom())
+    setPokemonName('')
+    setPokemonImage()
+    setType('No abilities for this pokemon')
+    setWin(false)
+    inputRef.current.value = ''
   }
 
   useEffect(() => {
@@ -51,28 +64,30 @@ export function PokemonInfo () {
   const handleClickPokemon = () => {
     const newPokemonId = GenerateRandom()
     setPokemonId(newPokemonId)
+    inputRef.current.value = ''
   }
 
   return (
     <div>
       <header className='page'>
-        <h1>PokeGuess</h1>
+        <h1 className='card'>PokeGuess</h1>
+        <h2>Score: {counter.current}</h2>
         <div className='page'>
           <img src={pokemonImage} alt={`Image extracted for ${pokemonId}`} />
-          {pokemonId && <p>{type}, {pokemonName}</p>}
+          {pokemonId && <p>{type}</p>}
         </div>
-        <button className='button' onClick={handleClickPokemon}> Pass </button>
+        <button className='pass' onClick={handleClickPokemon}> Pass </button>
       </header>
       <main>
         <label>
           Name of the pokemon:
-          <form className='form'>
+          <form className='form' onSubmit={handleSubmit}>
             <input ref={inputRef} placeholder='Charizard, Blastoise' />
-            <button onClick={verifyName} className='button'> Check </button>
+            <button className='button' type='submit'> Check </button>
           </form>
         </label>
       </main>
-      {win === 1 ? <CheckName correct={win} /> : <p>mal</p>}
+      {win && <CheckName correct={win} resetGame={resetGame} />}
     </div>
   )
 }

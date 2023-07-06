@@ -1,7 +1,5 @@
 import './App.css'
 import './index.css'
-import { CheckName } from '../components/CheckName.jsx'
-import { useRef, useState } from 'react'
 import { PokemonInfo } from '../components/pokemon.jsx'
 
 export function App () {
@@ -10,6 +8,9 @@ export function App () {
   return (
     <div>
       <PokemonInfo />
+      <footer>
+        <p>Created by <a href='https://github.com/kikealcocerdz'>kikealcocerdz</a></p>
+      </footer>
     </div>
   )
 }
