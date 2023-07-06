@@ -1,5 +1,5 @@
-export const CheckName = ({ correct, resetGame }) => {
-  const winnerText = correct === 1 ? 'You are wrong!' : 'You are correct!'
+export const PassName = ({ correct, resetGame }) => {
+  const winnerText = 'You failed!'
   return (
     <section className='winner'>
       <div className='text'>

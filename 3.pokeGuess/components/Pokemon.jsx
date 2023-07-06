@@ -1,6 +1,7 @@
 import { GenerateRandom } from '../logic/random_number'
 import { useEffect, useState, useRef } from 'react'
-import { CheckName } from './CheckName.jsx'
+import { CorrectName } from './CorrectName.jsx'
+import { PassName } from './PassName.jsx'
 const separator = '-'
 
 export function PokemonInfo () {
@@ -10,14 +11,13 @@ export function PokemonInfo () {
   const [pokemonImage, setPokemonImage] = useState()
   const [type, setType] = useState('No abilities for this pokemon')
   const [win, setWin] = useState(false)
+  const [lose, setLose] = useState(false)
   const verifyName = () => {
     const input = inputRef.current.value
     const inputCapitalized = input[0].toUpperCase() + input.slice(1)
     if (inputCapitalized === pokemonName) {
       counter.current++
       setWin(true)
-    } else {
-      setWin(false)
     }
   }
 
@@ -33,8 +33,8 @@ export function PokemonInfo () {
     setPokemonName('')
     setPokemonImage()
     setType('No abilities for this pokemon')
-    setWin(false)
     inputRef.current.value = ''
+    setWin(false)
   }
 
   useEffect(() => {
@@ -62,9 +62,9 @@ export function PokemonInfo () {
   }, [pokemonId])
 
   const handleClickPokemon = () => {
-    const newPokemonId = GenerateRandom()
-    setPokemonId(newPokemonId)
     inputRef.current.value = ''
+    counter.current = 0
+    setLose(true)
   }
 
   return (
@@ -87,7 +87,9 @@ export function PokemonInfo () {
           </form>
         </label>
       </main>
-      {win && <CheckName correct={win} resetGame={resetGame} />}
+      {console.log(counter)}
+      {win && <CorrectName correct={win} resetGame={resetGame} />}
+      {lose && <PassName correct={lose} resetGame={resetGame} />}
     </div>
   )
 }
