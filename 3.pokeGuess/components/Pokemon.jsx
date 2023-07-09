@@ -68,7 +68,7 @@ export function PokemonInfo () {
   }
 
   return (
-    <div>
+    <li className='page'>
       <header className='page'>
         <h1 className='card'>PokeGuess</h1>
         <h2>Score: {counter.current}</h2>
@@ -78,7 +78,7 @@ export function PokemonInfo () {
         </div>
         <button className='pass' onClick={handleClickPokemon}> Pass </button>
       </header>
-      <main>
+      <main className='main'>
         <label>
           Name of the pokemon:
           <form className='form' onSubmit={handleSubmit}>
@@ -90,6 +90,6 @@ export function PokemonInfo () {
       {console.log(counter)}
       {win && <CorrectName correct={win} resetGame={resetGame} />}
       {lose && <PassName correct={lose} resetGame={resetGame} />}
-    </div>
+    </li>
   )
 }

@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "image":"../media/mymooncustom_2285873628977052788_33241131767.jpg",
+      "name": "Chaqueta1"
+      },
+      {
+      "id": "2",
+      "image":"../media/mymooncustom_2838768484239841216_33241131767.jpg",
+      "name": "Chaqueta2"
+      },
+      {
+      "id": "3",
+      "image":"../media/mymooncustom_3054669230154883259_33241131767_0.jpg",
+      "name": "Chaqueta3"
+      },
+      {
+      "id": "4",
+      "image":"/media/mymooncustom_2967961656265286494_33241131767_0.jpg",
+      "name": "Chaqueta4"
+      }
+
+  ]
+  }
