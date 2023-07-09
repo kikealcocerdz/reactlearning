@@ -14,7 +14,7 @@ function App() {
       <FollowMouse />
         <nav>
         <img src="..\media\logo.jpeg" alt="MyMoon Customs" />
-          <h1>MyMoon Customs</h1>
+          <h1>MyM<span>oo</span>n Customs</h1>
         </nav>
       </header>
 
