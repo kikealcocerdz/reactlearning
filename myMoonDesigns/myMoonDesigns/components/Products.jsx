@@ -8,7 +8,6 @@ export function Products({ products }) {
         {products.map((product) => (
           <li className="portfolio-item" key={product.id}>
             <img src={product.image} alt={product.name} />
-            <div>{product.name}</div>
           </li>
         ))}
       </ul>

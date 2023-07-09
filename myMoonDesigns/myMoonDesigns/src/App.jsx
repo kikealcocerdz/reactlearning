@@ -1,5 +1,6 @@
 import { Products } from '../components/Products.jsx';
 import { SocialButton } from '../components/SocialButton';
+import { FollowMouse } from '../components/FollowMouse';
 import { products } from '../media/products.json';
 import './App.css'
 import './index.css'
@@ -8,29 +9,28 @@ function App() {
   console.log(products)
     return (
       <div>
-      <header>
+      <header className='extremoduro'>
+      <FollowMouse />
         <nav>
-          <img src="..\media\logo.jpeg" alt="MyMoon Customs" />
+        <img src="..\media\logo.jpeg" alt="MyMoon Customs" />
           <h1>MyMoon Customs</h1>
         </nav>
       </header>
 
       <main>
-        <section className='section'>
-        <h2>Clothing</h2>
-          <ul>
-        <li>🌘Personalizamos prendas denim y zapatillas</li>
-        <li>🌗Pedidos MD</li>
-        <li>🌖Envíos a España</li>
-        </ul>
+        <section className='portfolio'>
+          <div className='portfolio-gallery'>
+            <img src="../media/aida1.jpg" alt="aida1" className='portfolio-item'/>
+            <img src="../media/aida2.jpg" alt="aida1" className='portfolio-item'/>
+            <img src="../media/aida3.jpg" alt="aida1" className='portfolio-item'/>
+          </div>
         </section>
-
-        <section id="portfolio" className="portfolio-section">
-          <Products products={products} />
-        </section>
-
-        <section id="contact">
-          {/* Aquí puedes agregar un formulario de contacto para que los visitantes se pongan en contacto contigo */}
+        <section className='center'>
+        <button className='button'>
+        <span className="transition"></span>
+        <span className="gradient"></span>
+        <span className="label">Nuestros trabajos</span>
+        </button>
         </section>
       </main>
 

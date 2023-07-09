@@ -49,7 +49,7 @@ export function SocialButton() {
       <li className="social-item">
         <a
           className="social-link"
-          href="https://www.instagram.com/mymoon.custom/"
+          href="https://www.tiktok.com/@mymoon.custom"
           target="blank"
         >
           <svg
@@ -59,7 +59,7 @@ export function SocialButton() {
             fill="none"
           >
           <a
-              href="https://www.instagram.com/mymoon.custom/"
+              href="https://www.tiktok.com/@mymoon.custom"
               target="_blank"
               rel="noreferrer"
             >
