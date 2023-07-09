@@ -1,13 +1,11 @@
 import {useState, useEffect} from 'react'
-export const FollowMouse = () =>{
+export function FollowMouse () {
   const enabled = true
   const [position, setPosition] = useState({x:0, y:0})
 
   useEffect(() =>{
-    console.log('effect', {enabled})
     const handleMove = (event) =>{
       const{clientX, clientY} = event
-      console.log('handleMove', {clientX, clientY})
       setPosition({x: clientX, y:clientY})
     }
     if (enabled) {

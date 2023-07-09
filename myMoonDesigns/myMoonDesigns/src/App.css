@@ -19,6 +19,7 @@ header {
 
 nav{
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -36,7 +37,8 @@ nav h1 {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 5px;
   font-size: 50px;
-  width: fit-content;
+  width: 20%;
+  height: 20%;
   background-color: #515152dc;
   
 }
@@ -44,10 +46,10 @@ nav h1 {
 header img {
   display: flex;
   justify-content: center;
-  width: 150px;
+  width: 10%;
+  height: 10%;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   margin-right: 20px;
 }
 
@@ -350,8 +352,43 @@ button:active {
 }
 
 .center {
+  gap: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  text-align: center;
+  font-size:50px ;
+}
+
+.elemento-hover {
+  position: relative;
+}
+
+.elemento-hover .portfolio-item,
+.elemento-hover .texto-oculto {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.elemento-hover .texto-oculto {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 25%;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  color: #06384b;
+  font-size: 15px;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.elemento-hover:hover .portfolio-item {
+  opacity: 0;
+}
+
+.elemento-hover:hover .texto-oculto {
+  opacity: 1;
 }
