@@ -7,12 +7,13 @@ import { MyButton } from '../../components/MyButton.jsx';
 
 export function MainPage() {
     return (
-      <div>
+      <div name='home' className='main'>
       <header className='extremoduro'>
-      <FollowMouse />
         <nav>
         <img src="..\media\logo.jpeg" alt="MyMoon Customs" />
-          {/*<h1>MyM<span>oo</span>n Customs</h1>*/}
+        <MyButton text={'About us'} reference={'home'}/>
+        <MyButton text={"Nuestro trabajos"} reference={'gallery'}/>
+        <MyButton text={"Hazte con la tuya"} reference={'contact'}/>
         </nav>
       </header>
 
@@ -26,14 +27,8 @@ export function MainPage() {
           </div>
         </section>
         <section className='center'>
-          <MyButton text={"Nuestro trabajos"} reference={"/gallery"}/>
-          <MyButton text={"Hazte con la tuya"}/>
         </section>
       </main>
-
-      <footer className='social'>
-        <SocialButton />
-      </footer>
     </div>
   );
 }

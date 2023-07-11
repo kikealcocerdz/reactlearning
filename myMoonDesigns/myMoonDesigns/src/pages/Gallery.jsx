@@ -3,8 +3,9 @@ import { products } from "../../media/products.json";
 
 export function Gallery() {
   return (
-    <div>
-      HOLA
+    <div className='main' name='gallery'>
+      <h2>Nuestros trabajos</h2> 
+      <Products products={products} />
     </div>
   )
 }

@@ -1,34 +1,40 @@
-/* styles.css */
-
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* Estilos generales */
+
+.main{
+  padding-top: 80px;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #06374b3a;
-  cursor: none;
 }
 
 /* Estilos del encabezado */
 header {
+  padding-top: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
   justify-content: center;
   background-color: #ffffff;
   color: #fff;
   padding: 20px;
+  z-index: 9999;
 }
 
 nav{
-  border-radius: 50%;
-  align-items: first baseline;
-  display: flex;
+  align-items: column;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-nav img{
-  align-items: first baseline;
-  margin-right: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
 nav h1 {
   color: var(--color-77e2a01f);
@@ -50,25 +56,12 @@ h2{
   color: #29408c;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 50px;
-  font-weight: light;
-}
-
-nav h1 span {
-  color: var(--color-77e2a01f);
-  text-align: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 50px;
-  font-weight: light;
-  width: 20%;
-  height: 20%;
-  background-color: #7bcbdbf1;
-  color: #eee678;
 }
 
 header img {
   display: flex;
   justify-content: center;
-  width: 9%;
+  width: 90px;
   height: 10%;
   align-items: normal;
   justify-content: center;
@@ -76,21 +69,18 @@ header img {
 }
 
 .extremoduro {
-  width: 100%; /* Ajusta el ancho según tus necesidades */
-  height: 100%; /* Ajusta la altura según tus necesidades */
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url('../media/extremoduro.jpg'); /* Cambia la ruta y el nombre de la imagen */
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el div */
   background-position: center; /* Alinea la imagen al centro del div */
 }
-#about {
-  width: 100%;
-  background-color: #06384b;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  margin-bottom: 40px;
-}
+
 
 #portfolio {
+  aspect-ratio: 1/1;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -98,25 +88,30 @@ header img {
   background-color: #06384b;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 20px;
   margin-bottom: 40px;
 }
 
 .portfolio-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1rem;
-  padding: 1rem;
   width: 100%;
 }
 
+.portfolio-gallery-1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+
 .portfolio-item {
+  aspect-ratio: 1/1;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: fit-content;
-  padding: 20px;
-  margin: auto;
   text-align: center;
   transition: transform 0.3s ease;
 }
@@ -131,10 +126,6 @@ header img {
   border-radius: 4px;
 }
 
-.portfolio-item h3 {
-  margin-top: 10px;
-  color: #333;
-}
 
 #contact {
   background-color: #fff;
@@ -413,4 +404,55 @@ button:active {
 
 .elemento-hover:hover .texto-oculto {
   opacity: 1;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.form-submit {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.form-submit:hover {
+  background-color: #0056b3;
 }

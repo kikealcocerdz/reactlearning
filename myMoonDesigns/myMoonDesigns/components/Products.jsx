@@ -3,7 +3,7 @@ import "../src/App.css";
 export function Products({ products }) {
   return (
     <main className="portfolio">
-      <ul className="portfolio-gallery">
+      <ul className="portfolio-gallery-1">
         {/* eslint-disable-next-line react/prop-types*/}
         {products.map((product) => (
           <li className="portfolio-item" key={product.id}>

@@ -1,17 +1,21 @@
-
+import { Link } from 'react-scroll'
+import { useState } from 'react'
 
 export const MyButton = ({text, reference}) => {
-
-const handleClick = () => {
-  window.location.href = reference;
-}
+  const [nav, setNav] = useState(false);
+  const handleClick = () => setNav(!nav);
   
 
 return (
-<button href={reference} onClick={handleClick} className='button'>
-  <span className="transition"></span>
-  <span className="gradient"></span>
-  <span className="label">{text}</span>
-</button>
+  <button onClick={handleClick} className="button">
+    <span className="transition"></span>
+    <span className="gradient"></span>
+    <span className="label">
+      <Link to={reference} smooth={true} duration={500}>
+        {text}
+      </Link>
+    </span>
+  </button>
+  
 )
 }
